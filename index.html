@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsoring - Abirol Spritz 2027</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        /* Smooth Scrolling */
+        html { 
+            scroll-behavior: smooth; 
+            height: 100%; 
+            overflow: auto; 
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.1), transparent);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            color: #FFB84D;
+            margin-bottom: 15px;
+            text-shadow: 0 0 30px rgba(255, 140, 0, 0.6);
+            letter-spacing: 3px;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: fit-content;
+            max-width: 95%;
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 165, 0, 0.3);
+            border-radius: 50px;
+            text-align: center;
+            z-index: 1000;
+            margin: 0 auto 40px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            background: rgba(255, 165, 0, 0.2);
+            color: #FFB84D;
+            text-shadow: 0 0 15px rgba(255, 165, 0, 0.8);
+        }
+
+        /* Section */
+        section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: #FFB84D;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 0 0 20px rgba(255, 140, 0, 0.4);
+            font-weight: 600;
+        }
+
+        /* Intro Box */
+        .intro-box {
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.15), rgba(255, 140, 0, 0.05));
+            border: 2px solid rgba(255, 165, 0, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(255, 140, 0, 0.1);
+        }
+
+        .intro-box h2 {
+            color: #FFB84D;
+            margin-bottom: 25px;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+        }
+
+        .intro-box p {
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .intro-box strong {
+            color: #FFB84D;
+        }
+
+        /* Sponsoring Packages */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .package-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 165, 0, 0.3);
+            border-radius: 20px;
+            padding: 35px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--tier-gradient);
+        }
+
+        .package-card.platin {
+            --tier-gradient: linear-gradient(90deg, #E5E4E2, #ffffff);
+            --tier-color: #E5E4E2;
+        }
+
+        .package-card.gold {
+            --tier-gradient: linear-gradient(90deg, #FFD700, #FFF4B3);
+            --tier-color: #FFD700;
+        }
+
+        .package-card.silber {
+            --tier-gradient: linear-gradient(90deg, #C0C0C0, #E8E8E8);
+            --tier-color: #C0C0C0;
+        }
+
+        .package-card.bronze {
+            --tier-gradient: linear-gradient(90deg, #CD7F32, #E6A055);
+            --tier-color: #CD7F32;
+        }
+
+        .package-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 165, 0, 0.6);
+            box-shadow: 0 12px 40px rgba(255, 140, 0, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .package-tier {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--tier-color);
+        }
+
+        .package-price {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #FFB84D;
+            margin-bottom: 25px;
+        }
+
+        .package-price .currency {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .package-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .package-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .package-features li:last-child {
+            border-bottom: none;
+        }
+
+        .package-features li::before {
+            content: '✓';
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* Contact Section */
+        .contact-box {
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.15), rgba(255, 140, 0, 0.05));
+            border: 2px solid rgba(255, 165, 0, 0.4);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            margin-bottom: 60px;
+            box-shadow: 0 8px 32px rgba(255, 140, 0, 0.15);
+        }
+
+        .contact-box h2 {
+            color: #FFB84D;
+            margin-bottom: 25px;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+        }
+
+        .contact-box p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .contact-box a.email-link {
+            color: #FFB84D;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .contact-box a.email-link:hover {
+            text-shadow: 0 0 15px rgba(255, 165, 0, 0.8);
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.9), rgba(255, 100, 0, 0.9));
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            border: 2px solid rgba(255, 165, 0, 0.6);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(255, 140, 0, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 140, 0, 0.5);
+            background: linear-gradient(135deg, rgba(255, 140, 0, 1), rgba(255, 100, 0, 1));
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Sponsors Hall of Fame */
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .sponsor-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 165, 0, 0.3);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .sponsor-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 165, 0, 0.6);
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.25);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .sponsor-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #FFB84D;
+            margin-bottom: 12px;
+        }
+
+        .sponsor-tier-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .tier-platin {
+            background: linear-gradient(135deg, #E5E4E2, #ffffff);
+            color: #1a1a1a;
+        }
+
+        .tier-gold {
+            background: linear-gradient(135deg, #FFD700, #FFF4B3);
+            color: #1a1a1a;
+        }
+
+        .tier-silber {
+            background: linear-gradient(135deg, #C0C0C0, #E8E8E8);
+            color: #1a1a1a;
+        }
+
+        .tier-bronze {
+            background: linear-gradient(135deg, #CD7F32, #E6A055);
+            color: white;
+        }
+
+        .sponsor-amount {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+        }
+
+        .loading::after {
+            content: '...';
+            animation: dots 1.5s infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 20px 40px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 165, 0, 0.2);
+            margin-top: 80px;
+        }
+
+        footer p {
+            margin-bottom: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 350px;
+            }
+
+            .sponsors-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-box, .contact-box {
+                padding: 30px 20px;
+            }
+
+            nav {
+                gap: 8px;
+                padding: 10px 20px;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .package-card {
+                padding: 25px;
+            }
+
+            .package-price {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Pulse animation for emphasis */
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎓 Abirol Spritz 2027</h1>
+        <p class="subtitle">Sponsoring-Informationen</p>
+    </header>
+
+    <nav>
+        <a href="#intro">Über uns</a>
+        <a href="#pakete">Pakete</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="#sponsoren">Sponsoren</a>
+    </nav>
+
+    <div class="container">
+        <!-- Intro Section -->
+        <section id="intro">
+            <div class="intro-box">
+                <h2>✨ Unterstützen Sie unseren Abiturjahrgang 2027!</h2>
+                <p><strong>Gemeinsam schaffen wir unvergessliche Erinnerungen</strong></p>
+                <p>Wir vom Abijahrgang 2027 freuen uns über jede Unterstützung für unsere Abschlussfeier, das Abibuch, Abipullis und weitere Aktionen, die uns durch die Schulzeit begleiten.</p>
+                <p>Mit Ihrem Sponsoring helfen Sie uns dabei, diese besonderen Momente festzuhalten und unvergesslich zu machen. Werden Sie Teil unserer Erfolgsgeschichte!</p>
+            </div>
+        </section>
+
+        <!-- Sponsoring Packages -->
+        <section id="pakete">
+            <h2 class="section-title">💎 Sponsoring-Pakete</h2>
+            <div class="packages-grid">
+                <div class="package-card platin">
+                    <div class="package-tier">💎 Platin</div>
+                    <div class="package-price"><span class="currency">ab</span> 500€</div>
+                    <ul class="package-features">
+                        <li>Großes Logo auf Abipulli (Rücken)</li>
+                        <li>Ganzseitige Anzeige im Abibuch</li>
+                        <li>Prominente Erwähnung auf der Website</li>
+                        <li>Social Media Highlight-Post</li>
+                        <li>Persönliches Dankesschreiben</li>
+                        <li>Exklusive Einladung zum Abiball</li>
+                    </ul>
+                </div>
+
+                <div class="package-card gold">
+                    <div class="package-tier">🥇 Gold</div>
+                    <div class="package-price"><span class="currency">ab</span> 250€</div>
+                    <ul class="package-features">
+                        <li>Logo auf Abipulli (Ärmel)</li>
+                        <li>Halbe Seite im Abibuch</li>
+                        <li>Erwähnung auf der Website</li>
+                        <li>Social Media Post</li>
+                        <li>Dankesschreiben</li>
+                    </ul>
+                </div>
+
+                <div class="package-card silber">
+                    <div class="package-tier">🥈 Silber</div>
+                    <div class="package-price"><span class="currency">ab</span> 100€</div>
+                    <ul class="package-features">
+                        <li>Kleines Logo auf Abipulli</li>
+                        <li>Viertel Seite im Abibuch</li>
+                        <li>Erwähnung auf der Website</li>
+                        <li>Dankesschreiben</li>
+                    </ul>
+                </div>
+
+                <div class="package-card bronze">
+                    <div class="package-tier">🥉 Bronze</div>
+                    <div class="package-price"><span class="currency">ab</span> 50€</div>
+                    <ul class="package-features">
+                        <li>Namensnennung im Abibuch</li>
+                        <li>Erwähnung auf der Website</li>
+                        <li>Dankesschreiben</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="text-align: center; padding: 30px; background: rgba(255, 165, 0, 0.05); border-radius: 16px; border: 1px solid rgba(255, 165, 0, 0.2);">
+                <p style="color: rgba(255, 255, 255, 0.8); font-size: 1.05rem; line-height: 1.8;">
+                    💡 <strong style="color: #FFB84D;">Individuelle Lösungen möglich!</strong><br>
+                    Sie haben andere Vorstellungen? Sprechen Sie uns an – wir finden gemeinsam das passende Sponsoring-Paket für Ihr Unternehmen.
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="kontakt">
+            <div class="contact-box">
+                <h2>📧 Interesse geweckt?</h2>
+                <p>Kontaktieren Sie uns gerne für weitere Informationen zu unseren Sponsoring-Paketen oder individuellen Möglichkeiten.</p>
+                <p style="margin-top: 25px; font-size: 1.2rem;">
+                    <strong>E-Mail:</strong> 
+                    <a href="mailto:f.dragano@emagym.de" class="email-link">f.dragano@emagym.de</a>
+                </p>
+                
+                <div class="contact-buttons">
+                    <a href="mailto:f.dragano@emagym.de" class="btn">✉️ E-Mail senden</a>
+                    <a href="https://paypal.me/FDragano" target="_blank" rel="noopener noreferrer" class="btn">💰 Direkt unterstützen</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sponsors Hall of Fame -->
+        <section id="sponsoren">
+            <h2 class="section-title">🏆 Unsere Sponsoren</h2>
+            <p style="text-align: center; color: rgba(255, 255, 255, 0.7); margin-bottom: 40px; font-size: 1.1rem;">
+                Vielen Dank an alle, die uns bereits unterstützen!
+            </p>
+            <div id="sponsorsList" class="sponsors-grid">
+                <div class="loading">Sponsoren werden geladen</div>
+            </div>
+        </section>
+
+        <footer>
+            <p style="font-size: 1rem; margin-bottom: 15px;">© 2027 <strong style="color: #FFB84D;">Abirol Spritz</strong> - Abiturjahrgang 2027</p>
+            <p>Alle Rechte vorbehalten</p>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth Scroll für Navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Lade Sponsoren aus JSON
+        (async function() {
+            const container = document.getElementById('sponsorsList');
+            
+            try {
+                const response = await fetch('sponsors.json?t=' + Date.now());
+                if (!response.ok) throw new Error('Laden fehlgeschlagen');
+                
+                const sponsors = await response.json();
+                
+                if (sponsors.length === 0) {
+                    container.innerHTML = `
+                        <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; border: 2px dashed rgba(255, 165, 0, 0.3); border-radius: 16px; background: rgba(255, 165, 0, 0.05);">
+                            <div style="font-size: 4rem; margin-bottom: 20px; opacity: 0.5;">🤝</div>
+                            <p style="color: rgba(255, 255, 255, 0.7); font-size: 1.2rem; margin-bottom: 10px;">Noch keine Sponsoren eingetragen</p>
+                            <p style="color: rgba(255, 255, 255, 0.5); font-size: 1rem;">Seien Sie der Erste und unterstützen Sie uns!</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Sortiere nach Tier-Priorität
+                const tierOrder = { 'Platin': 1, 'Gold': 2, 'Silber': 3, 'Bronze': 4 };
+                sponsors.sort((a, b) => {
+                    const orderDiff = tierOrder[a.tier] - tierOrder[b.tier];
+                    if (orderDiff !== 0) return orderDiff;
+                    // Bei gleichem Tier: nach Betrag sortieren (absteigend)
+                    return parseFloat(b.amount) - parseFloat(a.amount);
+                });
+
+                container.innerHTML = '';
+                
+                sponsors.forEach(sponsor => {
+                    const card = document.createElement('div');
+                    card.className = 'sponsor-card';
+                    
+                    const tierClass = sponsor.tier.toLowerCase().replace('ä', 'a');
+                    
+                    card.innerHTML = `
+                        <div class="sponsor-name">${sponsor.name}</div>
+                        <span class="sponsor-tier-badge tier-${tierClass}">${sponsor.tier}</span>
+                        <div class="sponsor-amount">${sponsor.amount}€ Unterstützung</div>
+                    `;
+                    
+                    container.appendChild(card);
+                });
+                
+            } catch (error) {
+                console.error('Fehler beim Laden der Sponsoren:', error);
+                container.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; border: 2px dashed rgba(255, 165, 0, 0.3); border-radius: 16px; background: rgba(255, 165, 0, 0.05);">
+                        <div style="font-size: 3rem; margin-bottom: 20px;">⚠️</div>
+                        <p style="color: rgba(255, 165, 0, 0.9); font-size: 1.1rem; margin-bottom: 10px;">Sponsoren konnten nicht geladen werden</p>
+                        <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.95rem;">Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt.</p>
+                    </div>
+                `;
+            }
+        })();
+    </script>
+</body>
+</html>
