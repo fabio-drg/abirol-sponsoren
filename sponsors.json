@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Beispiel GmbH",
+        "amount": 1000,
+        "tier": "platin",
+        "logo": "",
+        "website": "https://example.com"
+    },
+    {
+        "name": "Mustermann AG",
+        "amount": 500,
+        "tier": "gold",
+        "logo": "",
+        "website": ""
+    },
+    {
+        "name": "Familie Müller",
+        "amount": 250,
+        "tier": "silber",
+        "logo": "",
+        "website": ""
+    },
+    {
+        "name": "Bäckerei Schmidt",
+        "amount": 100,
+        "tier": "bronze",
+        "logo": "",
+        "website": ""
+    }
+]
