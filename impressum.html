@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#FFB84D">
+    <title>Impressum - Abirol Spritz 2027</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        /* Smooth Scrolling */
+        html { 
+            scroll-behavior: smooth; 
+            height: 100%; 
+            overflow: auto; 
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        body {
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(-45deg, #1a1a1a, #2a1810, #1a1a1a, #2a1a05);
+            background-size: 400% 400%;
+            animation: backgroundShift 15s ease infinite;
+            color: white;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.1), transparent);
+            animation: fadeIn 1s ease-out;
+        }
+
+        header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 600;
+            background: linear-gradient(135deg, #FFB84D, #FF8C00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        /* Impressum Section */
+        .impressum-box {
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.08), rgba(255, 140, 0, 0.03));
+            border: 2px solid rgba(255, 165, 0, 0.25);
+            border-radius: 20px;
+            padding: 45px;
+            margin-bottom: 60px;
+            box-shadow: 0 8px 32px rgba(255, 140, 0, 0.1);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .impressum-box h2 {
+            color: #FFB84D;
+            margin-bottom: 30px;
+            font-size: clamp(1.8rem, 4vw, 2.3rem);
+            text-align: center;
+            text-shadow: 0 0 20px rgba(255, 140, 0, 0.4);
+        }
+
+        .impressum-box h3 {
+            color: #FFB84D;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+        }
+
+        .impressum-box h3:first-of-type {
+            margin-top: 0;
+        }
+
+        .impressum-box p,
+        .impressum-box ul {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+        }
+
+        .impressum-box strong {
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 600;
+        }
+
+        .impressum-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .impressum-box ul li {
+            margin-bottom: 8px;
+        }
+
+        .impressum-box a {
+            color: #FFB84D;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .impressum-box a:hover {
+            text-shadow: 0 0 15px rgba(255, 140, 0, 0.6);
+        }
+
+        .back-to-top {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 14px 35px;
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.2), rgba(255, 100, 0, 0.2));
+            color: #FFB84D;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            border: 2px solid rgba(255, 165, 0, 0.4);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .back-to-top:hover {
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.3), rgba(255, 100, 0, 0.3));
+            border-color: rgba(255, 165, 0, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 140, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 20px 40px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 165, 0, 0.2);
+            margin-top: 80px;
+        }
+
+        footer p {
+            margin-bottom: 8px;
+        }
+
+        footer a {
+            color: rgba(255, 165, 0, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #FFB84D;
+            text-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .impressum-box {
+                padding: 30px 20px;
+            }
+
+            .impressum-box h2 {
+                font-size: 1.8rem;
+            }
+
+            .impressum-box h3 {
+                font-size: 1.2rem;
+                margin-top: 25px;
+            }
+
+            .impressum-box p {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .impressum-box {
+                padding: 25px 15px;
+            }
+
+            .impressum-box h2 {
+                font-size: 1.5rem;
+            }
+
+            .impressum-box h3 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📜 Impressum</h1>
+        </header>
+
+        <main>
+            <div class="impressum-box">
+                <h3>Angaben gemäß § 5 TMG</h3>
+                
+                <h3>Dienstanbieter</h3>
+                <p><strong>Fabio Matteo Dragano</strong><br>
+Verantwortlicher für das Projekt Abirol Spritz 2027</p>
+                
+                <h3>Kontakt</h3>
+                <p><strong>Anschrift:</strong><br>
+Ein Projekt des Abiturjahrgangs 2027 des EMMA-Herwegh-Gymnasiums<br>
+Morsbacher Str. 40<br>
+42857 Remscheid</p>
+                
+                <p><strong>Telefon:</strong><br>
++49 176 87927934</p>
+                
+                <p><strong>E-Mail:</strong><br>
+<a href="mailto:f.dragano@emagym.de" style="color: #FFB84D; text-decoration: none; transition: all 0.3s ease;">f.dragano@emagym.de</a></p>
+                
+                <h3>Redaktionell verantwortlich</h3>
+                <p>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:<br>
+<strong>Fabio Matteo Dragano</strong><br>
+Morsbacher Str. 40, 42857 Remscheid</p>
+                
+                <h3>Haftungsausschluss</h3>
+                
+                <h3 style="font-size: clamp(1.05rem, 2.5vw, 1.25rem); margin-top: 20px;">Haftung für Inhalte</h3>
+                <p>Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+                
+                <h3 style="font-size: clamp(1.05rem, 2.5vw, 1.25rem); margin-top: 20px;">Haftung für Links</h3>
+                <p>Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar.</p>
+                
+                <h3 style="font-size: clamp(1.05rem, 2.5vw, 1.25rem); margin-top: 20px;">Urheberrecht</h3>
+                <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.</p>
+                
+                <div style="text-align: center;">
+                    <a href="index.html" class="back-to-top">← Zurück zur Startseite</a>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p style="font-size: 1rem; margin-bottom: 15px;">© 2027 <strong style="color: #FFB84D;">Abirol Spritz</strong> - Abiturjahrgang 2027</p>
+            <p style="margin-bottom: 10px;">Alle Rechte vorbehalten</p>
+        </footer>
+    </div>
+</body>
+</html>
