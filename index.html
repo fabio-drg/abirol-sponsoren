@@ -465,6 +465,7 @@
         <a href="#pakete">Pakete</a>
         <a href="#kontakt">Kontakt</a>
         <a href="#sponsoren">Sponsoren</a>
+        <a href="#hall-of-fame">Hall of Fame</a>
     </nav>
 
     <div class="container">
@@ -565,6 +566,17 @@
             </div>
         </section>
 
+        <!-- Hall of Fame Section -->
+        <section id="hall-of-fame">
+            <h2 class="section-title">🏆 Hall of Fame</h2>
+            <p style="text-align: center; color: rgba(255, 255, 255, 0.7); margin-bottom: 40px; font-size: 1.1rem;">
+                Besondere Anerkennung für unsere größten Unterstützer!
+            </p>
+            <div id="hallOfFameList" style="max-width: 1200px; margin: 0 auto;">
+                <div class="loading">Hall of Fame wird geladen</div>
+            </div>
+        </section>
+
         <footer>
             <p style="font-size: 1rem; margin-bottom: 15px;">© 2027 <strong style="color: #FFB84D;">Abirol Spritz</strong> - Abiturjahrgang 2027</p>
             <p>Alle Rechte vorbehalten</p>
@@ -642,6 +654,156 @@
                     </div>
                 `;
             }
+        })();
+
+        // ========================================
+        // HALL OF FAME
+        // ========================================
+        (async function(){
+            const container = document.getElementById('hallOfFameList');
+            if (!container) return;
+
+            let sponsors = [];
+
+            // Lade Sponsoren aus JSON
+            try {
+                const response = await fetch('sponsors.json?t=' + Date.now());
+                if (!response.ok) throw new Error('Laden fehlgeschlagen');
+                sponsors = await response.json();
+            } catch (error) {
+                console.error('Fehler beim Laden der Sponsoren:', error);
+                sponsors = [];
+            }
+
+            function renderHallOfFame() {
+                container.innerHTML = '';
+
+                if (sponsors.length === 0) {
+                    container.innerHTML = `
+                        <div style="text-align: center; padding: 60px 20px; border: 2px dashed rgba(255, 165, 0, 0.3); border-radius: 16px; background: rgba(255, 165, 0, 0.05);">
+                            <div style="font-size: 4rem; margin-bottom: 20px; opacity: 0.5;">🏆</div>
+                            <p style="color: rgba(255, 255, 255, 0.6); font-size: 1.1rem; margin-bottom: 10px;">Noch keine Sponsoren</p>
+                            <p style="color: rgba(255, 255, 255, 0.4); font-size: 0.9rem;">Seien Sie der Erste und unterstützen Sie uns!</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Gruppiere nach Tier
+                const tierOrder = { 'platin': 1, 'Platin': 1, 'gold': 2, 'Gold': 2, 'silber': 3, 'Silber': 3, 'bronze': 4, 'Bronze': 4 };
+                const sortedSponsors = [...sponsors].sort((a, b) => {
+                    const tierDiff = (tierOrder[a.tier] || 999) - (tierOrder[b.tier] || 999);
+                    if (tierDiff !== 0) return tierDiff;
+                    return parseFloat(b.amount) - parseFloat(a.amount);
+                });
+
+                const tierColors = {
+                    'platin': '#E5E4E2',
+                    'Platin': '#E5E4E2',
+                    'gold': '#FFD700',
+                    'Gold': '#FFD700',
+                    'silber': '#C0C0C0',
+                    'Silber': '#C0C0C0',
+                    'bronze': '#CD7F32',
+                    'Bronze': '#CD7F32'
+                };
+
+                const tierIcons = {
+                    'platin': '💎',
+                    'Platin': '💎',
+                    'gold': '🥇',
+                    'Gold': '🥇',
+                    'silber': '🥈',
+                    'Silber': '🥈',
+                    'bronze': '🥉',
+                    'Bronze': '🥉'
+                };
+
+                const tierNames = {
+                    'platin': 'Platin-Sponsor',
+                    'Platin': 'Platin-Sponsor',
+                    'gold': 'Gold-Sponsor',
+                    'Gold': 'Gold-Sponsor',
+                    'silber': 'Silber-Sponsor',
+                    'Silber': 'Silber-Sponsor',
+                    'bronze': 'Bronze-Sponsor',
+                    'Bronze': 'Bronze-Sponsor'
+                };
+
+                sortedSponsors.forEach(sponsor => {
+                    const tierColor = tierColors[sponsor.tier] || '#FFB84D';
+                    const tierIcon = tierIcons[sponsor.tier] || '⭐';
+                    const tierName = tierNames[sponsor.tier] || 'Sponsor';
+
+                    const sponsorCard = document.createElement('div');
+                    sponsorCard.style.cssText = `
+                        background: rgba(255, 255, 255, 0.05);
+                        border: 2px solid ${tierColor}40;
+                        border-radius: 16px;
+                        padding: 25px;
+                        margin-bottom: 20px;
+                        transition: all 0.3s ease;
+                    `;
+
+                    sponsorCard.addEventListener('mouseenter', function() {
+                        this.style.background = `${tierColor}15`;
+                        this.style.borderColor = `${tierColor}80`;
+                        this.style.transform = 'translateY(-4px)';
+                        this.style.boxShadow = `0 12px 32px ${tierColor}30`;
+                    });
+
+                    sponsorCard.addEventListener('mouseleave', function() {
+                        this.style.background = 'rgba(255, 255, 255, 0.05)';
+                        this.style.borderColor = `${tierColor}40`;
+                        this.style.transform = 'translateY(0)';
+                        this.style.boxShadow = 'none';
+                    });
+
+                    const websiteLink = sponsor.website ? 
+                        `<a href="${sponsor.website}" target="_blank" style="color: ${tierColor}; text-decoration: none; font-size: 0.9rem; margin-top: 10px; display: inline-block;">🔗 Website besuchen →</a>` 
+                        : '';
+
+                    sponsorCard.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 15px;">
+                            <div style="flex: 1; min-width: 200px;">
+                                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+                                    <span style="font-size: 2rem;">${tierIcon}</span>
+                                    <div>
+                                        <h3 style="color: ${tierColor}; margin: 0; font-size: 1.4rem; font-weight: 700;">${sponsor.name}</h3>
+                                        <div style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; margin-top: 4px;">${tierName}</div>
+                                    </div>
+                                </div>
+                                ${websiteLink}
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="color: ${tierColor}; font-size: 2rem; font-weight: 700;">${parseFloat(sponsor.amount).toLocaleString('de-DE')}€</div>
+                                <div style="color: rgba(255, 255, 255, 0.5); font-size: 0.85rem; margin-top: 4px;">Spendenbeitrag</div>
+                            </div>
+                        </div>
+                    `;
+
+                    container.appendChild(sponsorCard);
+                });
+
+                // Danke-Nachricht am Ende
+                const thankYou = document.createElement('div');
+                thankYou.style.cssText = `
+                    text-align: center;
+                    padding: 40px 20px;
+                    margin-top: 30px;
+                    border-top: 1px solid rgba(255, 165, 0, 0.2);
+                `;
+                thankYou.innerHTML = `
+                    <div style="font-size: 3rem; margin-bottom: 15px;">🙏</div>
+                    <h3 style="color: #FFB84D; font-size: 1.5rem; margin-bottom: 10px;">Vielen Dank!</h3>
+                    <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.6; max-width: 600px; margin: 0 auto;">
+                        Ohne eure Unterstützung wäre unser Abijahrgang nicht möglich. Jeder Beitrag hilft uns, unvergessliche Erinnerungen zu schaffen!
+                    </p>
+                `;
+                container.appendChild(thankYou);
+            }
+
+            renderHallOfFame();
         })();
     </script>
 </body>
