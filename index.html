@@ -58,58 +58,14 @@
             font-weight: 300;
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        .fade-in {
-            animation: fadeIn 1s ease-out forwards;
-        }
-
         /* Navigation */
         nav {
             position: sticky;
             top: 16px;
-            margin: 0 auto 40px;
+            left: 50%;
+            transform: translateX(-50%);
             width: fit-content;
-            max-width: calc(100% - 40px);
+            max-width: 95%;
             padding: 12px 30px;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(15px);
@@ -118,12 +74,11 @@
             border-radius: 50px;
             text-align: center;
             z-index: 1000;
+            margin: 0 auto 40px;
             display: flex;
             gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
-            left: 50%;
-            transform: translateX(-50%);
         }
 
         nav a {
@@ -165,9 +120,9 @@
             border: 2px solid rgba(255, 165, 0, 0.3);
             border-radius: 20px;
             padding: 40px;
+            margin-bottom: 60px;
             text-align: center;
             box-shadow: 0 8px 32px rgba(255, 140, 0, 0.1);
-            animation: fadeInUp 0.8s ease-out 0.1s both;
         }
 
         .intro-box h2 {
@@ -203,14 +158,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            opacity: 0;
-            animation: fadeInUp 0.6s ease-out forwards;
         }
-
-        .package-card:nth-child(1) { animation-delay: 0.1s; }
-        .package-card:nth-child(2) { animation-delay: 0.2s; }
-        .package-card:nth-child(3) { animation-delay: 0.3s; }
-        .package-card:nth-child(4) { animation-delay: 0.4s; }
 
         .package-card::before {
             content: '';
@@ -331,75 +279,6 @@
             text-shadow: 0 0 15px rgba(255, 165, 0, 0.8);
         }
 
-        .paypal-container {
-            background: rgba(255, 165, 0, 0.05);
-            border: 2px solid rgba(255, 165, 0, 0.3);
-            border-radius: 20px;
-            padding: 30px;
-            margin-top: 30px;
-            margin-bottom: 20px;
-        }
-
-        .paypal-container h3 {
-            color: #FFB84D;
-            margin-bottom: 20px;
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
-            text-align: center;
-        }
-
-        .paypal-form {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .amount-input-wrapper {
-            position: relative;
-            flex: 1;
-            min-width: 200px;
-            max-width: 300px;
-        }
-
-        .amount-input {
-            width: 100%;
-            padding: 16px 20px;
-            padding-left: 35px;
-            font-size: 1.1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 165, 0, 0.4);
-            border-radius: 15px;
-            color: white;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .amount-input:focus {
-            outline: none;
-            border-color: rgba(255, 165, 0, 0.7);
-            box-shadow: 0 0 20px rgba(255, 140, 0, 0.3);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .amount-input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .euro-sign {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #FFB84D;
-            font-weight: 600;
-            font-size: 1.1rem;
-            pointer-events: none;
-        }
-
         .contact-buttons {
             display: flex;
             gap: 20px;
@@ -515,198 +394,6 @@
             60%, 100% { content: '...'; }
         }
 
-        /* Countdown Section */
-        .countdown-section {
-            background: linear-gradient(135deg, rgba(255, 165, 0, 0.2), rgba(255, 140, 0, 0.1));
-            border: 3px solid rgba(255, 165, 0, 0.4);
-            border-radius: 25px;
-            padding: 50px 30px;
-            margin-top: 30px;
-            margin-bottom: 60px;
-            text-align: center;
-            box-shadow: 0 12px 40px rgba(255, 140, 0, 0.2);
-            animation: fadeInUp 0.8s ease-out 0.2s both;
-        }
-
-        .countdown-title {
-            font-size: clamp(1.8rem, 5vw, 2.8rem);
-            color: #FFB84D;
-            margin-bottom: 15px;
-            text-shadow: 0 0 25px rgba(255, 140, 0, 0.5);
-        }
-
-        .countdown-subtitle {
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 30px;
-        }
-
-        .countdown-timer {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-
-        .countdown-item {
-            background: rgba(255, 255, 255, 0.08);
-            border: 2px solid rgba(255, 165, 0, 0.3);
-            border-radius: 15px;
-            padding: 25px;
-            min-width: 120px;
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.6s ease-out both;
-        }
-
-        .countdown-item:nth-child(1) { animation-delay: 0.4s; }
-        .countdown-item:nth-child(2) { animation-delay: 0.5s; }
-        .countdown-item:nth-child(3) { animation-delay: 0.6s; }
-        .countdown-item:nth-child(4) { animation-delay: 0.7s; }
-
-        .countdown-item:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 165, 0, 0.6);
-            box-shadow: 0 8px 25px rgba(255, 140, 0, 0.3);
-        }
-
-        .countdown-value {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: bold;
-            color: #FFB84D;
-            display: block;
-            text-shadow: 0 0 20px rgba(255, 140, 0, 0.5);
-        }
-
-        .countdown-label {
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
-            color: rgba(255, 255, 255, 0.7);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 10px;
-        }
-
-        /* Location Section */
-        .location-box {
-            background: linear-gradient(135deg, rgba(255, 165, 0, 0.15), rgba(255, 140, 0, 0.05));
-            border: 2px solid rgba(255, 165, 0, 0.3);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 60px;
-            text-align: center;
-            box-shadow: 0 8px 32px rgba(255, 140, 0, 0.1);
-            animation: fadeInUp 0.8s ease-out 0.3s both;
-        }
-
-        .location-box h2 {
-            color: #FFB84D;
-            margin-bottom: 25px;
-            font-size: clamp(1.5rem, 4vw, 2rem);
-        }
-
-        .location-box p {
-            font-size: clamp(1rem, 2.5vw, 1.15rem);
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.8;
-            margin-bottom: 25px;
-        }
-
-        .map-container {
-            border-radius: 15px;
-            overflow: hidden;
-            border: 2px solid rgba(255, 165, 0, 0.3);
-            box-shadow: 0 8px 25px rgba(255, 140, 0, 0.2);
-            margin-top: 20px;
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 400px;
-            border: none;
-            display: block;
-        }
-
-        /* FAQ Section */
-        .faq-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 165, 0, 0.3);
-            border-radius: 15px;
-            margin-bottom: 20px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            opacity: 0;
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        .faq-item:nth-child(1) { animation-delay: 0.1s; }
-        .faq-item:nth-child(2) { animation-delay: 0.2s; }
-        .faq-item:nth-child(3) { animation-delay: 0.3s; }
-        .faq-item:nth-child(4) { animation-delay: 0.4s; }
-
-        .faq-item:hover {
-            border-color: rgba(255, 165, 0, 0.5);
-            box-shadow: 0 8px 25px rgba(255, 140, 0, 0.2);
-        }
-
-        .faq-question {
-            padding: 25px 30px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: clamp(1.05rem, 2.5vw, 1.2rem);
-            font-weight: 600;
-            color: #FFB84D;
-            transition: all 0.3s ease;
-        }
-
-        .faq-question:hover {
-            background: rgba(255, 165, 0, 0.1);
-        }
-
-        .faq-icon {
-            font-size: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            padding: 0 30px;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-            padding: 0 30px 25px;
-        }
-
-        .faq-answer p {
-            color: rgba(255, 255, 255, 0.85);
-            line-height: 1.8;
-            font-size: clamp(0.95rem, 2.2vw, 1.05rem);
-        }
-
-        .faq-answer a {
-            color: #FFB84D;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .faq-answer a:hover {
-            text-shadow: 0 0 15px rgba(255, 165, 0, 0.8);
-        }
-
         /* Footer */
         footer {
             text-align: center;
@@ -719,17 +406,6 @@
 
         footer p {
             margin-bottom: 8px;
-        }
-
-        footer a {
-            color: rgba(255, 165, 0, 0.8);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        footer a:hover {
-            color: #FFB84D;
-            text-shadow: 0 0 10px rgba(255, 165, 0, 0.5);
         }
 
         /* Responsive */
@@ -748,58 +424,22 @@
                 max-width: 350px;
             }
 
-            .paypal-form {
-                flex-direction: column;
-            }
-
-            .amount-input-wrapper {
-                max-width: 100%;
-            }
-
-            .paypal-container {
-                padding: 20px 15px;
-            }
-
             .sponsors-grid {
                 grid-template-columns: 1fr;
             }
 
-            .intro-box, .contact-box, .location-box {
+            .intro-box, .contact-box {
                 padding: 30px 20px;
             }
 
             nav {
-                position: sticky;
-                top: 10px;
-                gap: 6px;
-                padding: 10px 15px;
-                max-width: calc(100% - 20px);
-                margin: 0 auto 30px;
-                left: 0;
-                right: 0;
-                transform: none;
+                gap: 8px;
+                padding: 10px 20px;
             }
 
             nav a {
-                font-size: 0.75rem;
-                padding: 6px 10px;
-            }
-
-            .countdown-timer {
-                gap: 10px;
-            }
-
-            .countdown-item {
-                min-width: 80px;
-                padding: 15px 10px;
-            }
-
-            .countdown-value {
-                font-size: clamp(2rem, 8vw, 3rem);
-            }
-
-            .map-container iframe {
-                height: 300px;
+                font-size: 0.8rem;
+                padding: 6px 12px;
             }
         }
 
@@ -812,21 +452,33 @@
                 font-size: 1.8rem;
             }
         }
+        /* FAQ / Accordion styles */
+        .faq-accordion { max-width: 1000px; margin: 0 auto; }
+        .faq-item { margin-bottom: 16px; border-radius: 12px; overflow: hidden; border:1px solid rgba(255,165,0,0.08); background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); transition: transform .25s ease, box-shadow .25s ease; }
+        .faq-item:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .faq-question { width:100%; display:flex; align-items:center; justify-content:space-between; padding:18px 20px; background:none; border:none; color:white; font-size:1.05rem; font-weight:600; cursor:pointer; }
+        .faq-question:focus { outline: 3px solid rgba(255,165,0,0.12); border-radius:8px; }
+        .faq-icon { transition: transform .35s cubic-bezier(.2,.9,.2,1); font-size:1.2rem; color:#FFB84D; margin-left:12px; display:inline-block; }
+        .faq-answer { padding:0 20px; color: rgba(255,255,255,0.88); max-height:0; overflow:hidden; transition: max-height .45s ease, padding .35s ease, opacity .35s ease; opacity:0; }
+        .faq-item.open .faq-answer { padding:16px 20px 20px; max-height: 600px; opacity:1; }
+        .faq-item.open .faq-icon { transform: rotate(45deg); }
+        @keyframes fadeUp { from { opacity:0; transform: translateY(8px);} to { opacity:1; transform: translateY(0);} }
+        .faq-item { animation: fadeUp .45s ease both; }
     </style>
 </head>
 <body>
     <header>
         <h1>🎓 Abirol Spritz 2027</h1>
-        <p class="subtitle">EMMA-Herwegh-Gymnasium • Sponsoring-Informationen</p>
+        <p class="subtitle">Sponsoring-Informationen</p>
+        <p class="school" style="color: rgba(255,255,255,0.85); margin-top:10px; font-weight:400;">Wir sind vom EMMA-Herweghy-Gymnasium aus Remscheid</p>
     </header>
 
     <nav>
         <a href="#intro">Über uns</a>
-        <a href="#location">Location</a>
         <a href="#pakete">Pakete</a>
-        <a href="#faq">FAQ</a>
         <a href="#kontakt">Kontakt</a>
-        <a href="#sponsoren">Sponsoren</a>
+        <a href="#sponsoren">Unsere Sponsoren</a>
+        <a href="#faq">FAQ</a>
     </nav>
 
     <div class="container">
@@ -835,44 +487,8 @@
             <div class="intro-box">
                 <h2>✨ Unterstützen Sie unseren Abiturjahrgang 2027!</h2>
                 <p><strong>Gemeinsam schaffen wir unvergessliche Erinnerungen</strong></p>
-                <p>Wir vom Abijahrgang 2027 des <strong>EMMA-Herwegh-Gymnasiums</strong> freuen uns über jede Unterstützung für unsere Abschlussfeier, das Abibuch, Abipullis und weitere Aktionen, die uns durch die Schulzeit begleiten.</p>
+                <p>Wir vom Abijahrgang 2027 freuen uns über jede Unterstützung für unsere Abschlussfeier, das Abibuch, Abipullis und weitere Aktionen, die uns durch die Schulzeit begleiten.</p>
                 <p>Mit Ihrem Sponsoring helfen Sie uns dabei, diese besonderen Momente festzuhalten und unvergesslich zu machen. Werden Sie Teil unserer Erfolgsgeschichte!</p>
-            </div>
-
-            <!-- Countdown Section -->
-            <div class="countdown-section" id="countdown">
-                <h2 class="countdown-title">🎊 Countdown zum Abiball</h2>
-                <p class="countdown-subtitle">📍 Alte Schlossfabrik Solingen • 7. Juli 2027</p>
-                <div class="countdown-timer">
-                    <div class="countdown-item">
-                        <span class="countdown-value" id="days">--</span>
-                        <span class="countdown-label">Tage</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-value" id="hours">--</span>
-                        <span class="countdown-label">Stunden</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-value" id="minutes">--</span>
-                        <span class="countdown-label">Minuten</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-value" id="seconds">--</span>
-                        <span class="countdown-label">Sekunden</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Location Section -->
-        <section id="location">
-            <div class="location-box">
-                <h2>🏛️ Unsere Abiball-Location</h2>
-                <p><strong>Alte Schlossfabrik Solingen</strong></p>
-                <p>Ein einzigartiges Industrie-Denkmal mit besonderem Charme - der perfekte Ort für unseren unvergesslichen Abiball am 7. Juli 2027!</p>
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2494.8374829279854!2d7.153417076902825!3d51.14647043956285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b92aa081e7d681%3A0x6f607335e8e551d1!2sAlte%20Schlossfabrik%20-%20Solingen!5e0!3m2!1sde!2sde!4v1738778523044!5m2!1sde!2sde" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
             </div>
         </section>
 
@@ -935,55 +551,6 @@
             </div>
         </section>
 
-        <!-- FAQ Section -->
-        <section id="faq">
-            <h2 class="section-title">❓ Häufig gestellte Fragen</h2>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Wo findet der Abiball statt?</span>
-                        <span class="faq-icon">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Unser Abiball findet am <strong>7. Juli 2027</strong> in der <strong>Alten Schlossfabrik in Solingen</strong> statt. Eine wunderschöne Location für einen unvergesslichen Abend! 🎉</p>
-                        <p style="margin-top: 15px;">
-                            📍 <a href="#location">Zur Karte springen</a>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Wie kann ich Sponsor werden?</span>
-                        <span class="faq-icon">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Kontaktieren Sie uns einfach per E-Mail an <a href="mailto:f.dragano@emagym.de">f.dragano@emagym.de</a>. Wir besprechen dann gemeinsam, welches Sponsoring-Paket am besten zu Ihnen passt oder erstellen ein individuelles Angebot.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Welche Vorteile habe ich als Sponsor?</span>
-                        <span class="faq-icon">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Je nach gewähltem Paket erhalten Sie Logoплatzierungen auf unseren Abipullis, Anzeigen in unserem Abibuch, Erwähnungen auf unserer Website und in Social Media. Platin-Sponsoren erhalten zudem eine exklusive Einladung zu unserem Abiball.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Sind individuelle Sponsoring-Pakete möglich?</span>
-                        <span class="faq-icon">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Auf jeden Fall! Die angegebenen Pakete sind Vorschläge. Wir sind offen für individuelle Lösungen und passen die Leistungen gerne an Ihre Wünsche und Ihr Budget an. Sprechen Sie uns einfach an!</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Contact Section -->
         <section id="kontakt">
             <div class="contact-box">
@@ -995,34 +562,9 @@
                 </p>
                 
                 <div class="contact-buttons">
-                    <a href="mailto:f.dragano@emagym.de?subject=Sponsoring-Anfrage%20Abirol%20Spritz%202027&body=Guten%20Tag%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20ein%20Sponsoring-Paket%20f%C3%BCr%20den%20Abiturjahrgang%202027.%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen" class="btn">✉️ E-Mail senden</a>
+                    <a href="mailto:f.dragano@emagym.de" class="btn">✉️ E-Mail senden</a>
+                    <a href="https://paypal.me/FDragano" target="_blank" rel="noopener noreferrer" class="btn">💰 Direkt unterstützen</a>
                 </div>
-
-                <div class="paypal-container">
-                    <h3>💰 Direkt unterstützen via PayPal</h3>
-                    <div class="paypal-form">
-                        <div class="amount-input-wrapper">
-                            <span class="euro-sign">€</span>
-                            <input 
-                                type="number" 
-                                id="paypalAmount" 
-                                class="amount-input" 
-                                placeholder="Betrag eingeben" 
-                                min="1" 
-                                step="1"
-                            >
-                        </div>
-                        <button id="paypalBtn" class="btn" style="margin: 0;">Jetzt spenden</button>
-                    </div>
-                    <p style="margin-top: 15px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); text-align: center;">
-                        Geben Sie Ihren Wunschbetrag ein und werden Sie Teil unserer Erfolgsgeschichte!
-                    </p>
-                </div>
-                
-                <p style="margin-top: 20px; font-size: 0.95rem; color: rgba(255, 255, 255, 0.7);">
-                    💳 <strong>Bankverbindung auf Anfrage</strong><br>
-                    Wir akzeptieren auch Überweisungen und stellen gerne eine Spendenquittung aus.
-                </p>
             </div>
         </section>
 
@@ -1037,80 +579,59 @@
             </div>
         </section>
 
+        <!-- FAQ Section (improved) -->
+        <section id="faq">
+            <h2 class="section-title">❓ Häufige Fragen (FAQ)</h2>
+            <div class="faq-accordion" role="list">
+                <div class="faq-item" role="listitem">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq1" id="faq1-btn">
+                        <span>Wie kann ich Sponsor werden?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div id="faq1" class="faq-answer" role="region" aria-labelledby="faq1-btn">
+                        <p>Schreiben Sie uns eine E-Mail an <a href="mailto:f.dragano@emagym.de" style="color:#FFB84D; text-decoration:none;">f.dragano@emagym.de</a> oder nutzen Sie den Direkt-Link über PayPal für eine schnelle Unterstützung.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" role="listitem">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq2" id="faq2-btn">
+                        <span>Welche Leistungen erhalte ich als Sponsor?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div id="faq2" class="faq-answer" role="region" aria-labelledby="faq2-btn">
+                        <p>Abhängig vom Paket (Platin/Gold/Silber/Bronze) erhalten Sie z. B. Logoplatzierung auf Pullis, Erwähnung im Abibuch, Social-Media-Nennungen und persönliche Danksagungen.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" role="listitem">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq3" id="faq3-btn">
+                        <span>Gibt es eine Rechnung oder Spendenbescheinigung?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div id="faq3" class="faq-answer" role="region" aria-labelledby="faq3-btn">
+                        <p>Für Sponsoring-Leistungen stellen wir auf Anfrage gerne eine Quittung oder Rechnung aus. Kontaktieren Sie uns per E-Mail mit Ihren Angaben.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" role="listitem">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq4" id="faq4-btn">
+                        <span>Kann ich ein individuelles Paket vereinbaren?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div id="faq4" class="faq-answer" role="region" aria-labelledby="faq4-btn">
+                        <p>Ja — wir arbeiten gerne individuelle Lösungen aus. Schreiben Sie uns Ihre Wünsche per E-Mail, wir melden uns zeitnah zurück.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <footer>
             <p style="font-size: 1rem; margin-bottom: 15px;">© 2027 <strong style="color: #FFB84D;">Abirol Spritz</strong> - Abiturjahrgang 2027</p>
-            <p>EMMA-Herwegh-Gymnasium, Remscheid</p>
-            <p style="margin-top: 15px;">
-                <a href="impressum.html">Impressum</a> • 
-                <a href="mailto:f.dragano@emagym.de">Kontakt</a>
-            </p>
+            <p>Alle Rechte vorbehalten</p>
         </footer>
     </div>
 
     <script>
-        // PayPal Betrag Handler
-        document.getElementById('paypalBtn').addEventListener('click', function() {
-            const amount = document.getElementById('paypalAmount').value;
-            if (amount && amount > 0) {
-                window.open(`https://paypal.me/FDragano/${amount}EUR`, '_blank');
-            } else {
-                alert('Bitte geben Sie einen gültigen Betrag ein.');
-            }
-        });
-
-        // Enter-Taste im Eingabefeld
-        document.getElementById('paypalAmount').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                document.getElementById('paypalBtn').click();
-            }
-        });
-
-        // Countdown Timer
-        function updateCountdown() {
-            const abiballDate = new Date('2027-07-07T18:00:00').getTime();
-            const now = new Date().getTime();
-            const distance = abiballDate - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById('days').textContent = days;
-            document.getElementById('hours').textContent = hours;
-            document.getElementById('minutes').textContent = minutes;
-            document.getElementById('seconds').textContent = seconds;
-
-            if (distance < 0) {
-                document.getElementById('days').textContent = '0';
-                document.getElementById('hours').textContent = '0';
-                document.getElementById('minutes').textContent = '0';
-                document.getElementById('seconds').textContent = '0';
-                document.querySelector('.countdown-title').textContent = '🎉 Der Abiball ist da!';
-            }
-        }
-
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-
-        // FAQ Toggle
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', function() {
-                const faqItem = this.parentElement;
-                const isActive = faqItem.classList.contains('active');
-                
-                // Schließe alle anderen FAQs
-                document.querySelectorAll('.faq-item').forEach(item => {
-                    item.classList.remove('active');
-                });
-                
-                // Toggle aktuelles FAQ
-                if (!isActive) {
-                    faqItem.classList.add('active');
-                }
-            });
-        });
-
         // Smooth Scroll für Navigation
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1180,6 +701,67 @@
                         <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.95rem;">Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt.</p>
                     </div>
                 `;
+            }
+        })();
+
+        // Enhanced FAQ accordion behavior: smooth height animation + accessibility
+        (function(){
+            const buttons = document.querySelectorAll('.faq-question');
+
+            function closeItem(item) {
+                item.classList.remove('open');
+                const btn = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                if (btn) btn.setAttribute('aria-expanded', 'false');
+                if (answer) answer.style.maxHeight = '0px';
+            }
+
+            function openItem(item) {
+                item.classList.add('open');
+                const btn = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                if (btn) btn.setAttribute('aria-expanded', 'true');
+                if (answer) answer.style.maxHeight = answer.scrollHeight + 20 + 'px';
+            }
+
+            buttons.forEach(btn => {
+                const item = btn.closest('.faq-item');
+                const answer = item.querySelector('.faq-answer');
+
+                // keyboard support
+                btn.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        btn.click();
+                    }
+                });
+
+                btn.addEventListener('click', () => {
+                    const isOpen = item.classList.contains('open');
+
+                    // Close all to allow only one open at a time
+                    document.querySelectorAll('.faq-item.open').forEach(i => closeItem(i));
+
+                    if (!isOpen) openItem(item);
+                    else closeItem(item);
+                });
+
+                // Ensure starting maxHeight is correct if some items are pre-open
+                if (item.classList.contains('open') && answer) {
+                    answer.style.maxHeight = answer.scrollHeight + 20 + 'px';
+                }
+            });
+
+            // Optional: reveal FAQ items when scrolled into view
+            try {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(ent => {
+                        if (ent.isIntersecting) ent.target.classList.add('visible');
+                    });
+                }, { threshold: 0.08 });
+                document.querySelectorAll('.faq-item').forEach(i => observer.observe(i));
+            } catch (e) {
+                // IntersectionObserver nicht unterstützt — kein Problem
             }
         })();
     </script>
