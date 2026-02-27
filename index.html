@@ -456,12 +456,8 @@
            FAQ — Redesign
         ══════════════════════════════════════ */
         @keyframes faqSlideIn {
-            from { opacity: 0; transform: translateY(28px) scale(0.98); }
-            to   { opacity: 1; transform: translateY(0)   scale(1);    }
-        }
-        @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 8px 32px rgba(255,140,0,0.2); }
-            50%       { box-shadow: 0 8px 40px rgba(255,140,0,0.38); }
+            from { opacity: 0; transform: translateY(24px) scale(0.98); }
+            to   { opacity: 1; transform: translateY(0)    scale(1);    }
         }
 
         .faq-section-intro {
@@ -481,21 +477,26 @@
             overflow: hidden;
             background: linear-gradient(135deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015));
             border: 1px solid rgba(255,165,0,0.12);
+            /* hover/open transitions — NO animation shorthand here */
             transition: transform .3s cubic-bezier(.2,.8,.2,1),
-                        box-shadow .3s ease,
+                        box-shadow .35s ease,
                         border-color .3s ease;
-            opacity: 0;
+            opacity: 0; /* hidden until .visible is added */
         }
+        /* Entrance: forwards keeps opacity:1 after animation; does NOT conflict with open state */
         .faq-item.visible {
-            animation: faqSlideIn .5s cubic-bezier(.2,.8,.2,1) both;
+            animation: faqSlideIn .5s cubic-bezier(.2,.8,.2,1) forwards;
         }
-        .faq-item:nth-child(1).visible { animation-delay: .05s; }
-        .faq-item:nth-child(2).visible { animation-delay: .12s; }
-        .faq-item:nth-child(3).visible { animation-delay: .19s; }
-        .faq-item:nth-child(4).visible { animation-delay: .26s; }
-        .faq-item:nth-child(5).visible { animation-delay: .33s; }
-        .faq-item:nth-child(6).visible { animation-delay: .40s; }
-        .faq-item:nth-child(7).visible { animation-delay: .47s; }
+        .faq-item:nth-child(1).visible { animation-delay: .04s; }
+        .faq-item:nth-child(2).visible { animation-delay: .10s; }
+        .faq-item:nth-child(3).visible { animation-delay: .16s; }
+        .faq-item:nth-child(4).visible { animation-delay: .22s; }
+        .faq-item:nth-child(5).visible { animation-delay: .28s; }
+        .faq-item:nth-child(6).visible { animation-delay: .34s; }
+        .faq-item:nth-child(7).visible { animation-delay: .40s; }
+        /* Keep items visible after animation — prevents flash-to-invisible on state changes */
+        .faq-item.visible,
+        .faq-item.open { opacity: 1; }
 
         /* Coloured left accent bar */
         .faq-item::before {
@@ -518,7 +519,7 @@
         }
         .faq-item.open {
             border-color: rgba(255,165,0,0.45);
-            animation: pulseGlow 2.8s ease infinite;
+            box-shadow: 0 8px 36px rgba(255,140,0,0.22), 0 0 0 1px rgba(255,165,0,0.1);
         }
 
         .faq-question {
