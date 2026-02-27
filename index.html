@@ -452,18 +452,179 @@
                 font-size: 1.8rem;
             }
         }
-        /* FAQ / Accordion styles */
-        .faq-accordion { max-width: 1000px; margin: 0 auto; }
-        .faq-item { margin-bottom: 16px; border-radius: 12px; overflow: hidden; border:1px solid rgba(255,165,0,0.08); background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); transition: transform .25s ease, box-shadow .25s ease; }
-        .faq-item:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        .faq-question { width:100%; display:flex; align-items:center; justify-content:space-between; padding:18px 20px; background:none; border:none; color:white; font-size:1.05rem; font-weight:600; cursor:pointer; }
-        .faq-question:focus { outline: 3px solid rgba(255,165,0,0.12); border-radius:8px; }
-        .faq-icon { transition: transform .35s cubic-bezier(.2,.9,.2,1); font-size:1.2rem; color:#FFB84D; margin-left:12px; display:inline-block; }
-        .faq-answer { padding:0 20px; color: rgba(255,255,255,0.88); max-height:0; overflow:hidden; transition: max-height .45s ease, padding .35s ease, opacity .35s ease; opacity:0; }
-        .faq-item.open .faq-answer { padding:16px 20px 20px; max-height: 600px; opacity:1; }
-        .faq-item.open .faq-icon { transform: rotate(45deg); }
-        @keyframes fadeUp { from { opacity:0; transform: translateY(8px);} to { opacity:1; transform: translateY(0);} }
-        .faq-item { animation: fadeUp .45s ease both; }
+        /* ══════════════════════════════════════
+           FAQ — Redesign
+        ══════════════════════════════════════ */
+        @keyframes faqSlideIn {
+            from { opacity: 0; transform: translateY(28px) scale(0.98); }
+            to   { opacity: 1; transform: translateY(0)   scale(1);    }
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 8px 32px rgba(255,140,0,0.2); }
+            50%       { box-shadow: 0 8px 40px rgba(255,140,0,0.38); }
+        }
+
+        .faq-section-intro {
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 1.05rem;
+            margin-bottom: 48px;
+            line-height: 1.7;
+        }
+
+        .faq-accordion { max-width: 860px; margin: 0 auto; }
+
+        .faq-item {
+            position: relative;
+            margin-bottom: 14px;
+            border-radius: 14px;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015));
+            border: 1px solid rgba(255,165,0,0.12);
+            transition: transform .3s cubic-bezier(.2,.8,.2,1),
+                        box-shadow .3s ease,
+                        border-color .3s ease;
+            opacity: 0;
+        }
+        .faq-item.visible {
+            animation: faqSlideIn .5s cubic-bezier(.2,.8,.2,1) both;
+        }
+        .faq-item:nth-child(1).visible { animation-delay: .05s; }
+        .faq-item:nth-child(2).visible { animation-delay: .12s; }
+        .faq-item:nth-child(3).visible { animation-delay: .19s; }
+        .faq-item:nth-child(4).visible { animation-delay: .26s; }
+        .faq-item:nth-child(5).visible { animation-delay: .33s; }
+        .faq-item:nth-child(6).visible { animation-delay: .40s; }
+        .faq-item:nth-child(7).visible { animation-delay: .47s; }
+
+        /* Coloured left accent bar */
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #FFB84D, #FF6B00);
+            opacity: 0;
+            transition: opacity .3s ease;
+            border-radius: 4px 0 0 4px;
+        }
+        .faq-item:hover::before,
+        .faq-item.open::before { opacity: 1; }
+
+        .faq-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255,165,0,0.35);
+            box-shadow: 0 14px 40px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,165,0,0.08);
+        }
+        .faq-item.open {
+            border-color: rgba(255,165,0,0.45);
+            animation: pulseGlow 2.8s ease infinite;
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 22px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            text-align: left;
+        }
+        .faq-question:focus-visible {
+            outline: 2px solid rgba(255,184,77,0.6);
+            outline-offset: -2px;
+            border-radius: 14px;
+        }
+        .faq-item.open .faq-question {
+            border-bottom: 1px solid rgba(255,165,0,0.1);
+        }
+
+        .faq-num {
+            flex-shrink: 0;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255,184,77,0.18), rgba(255,107,0,0.12));
+            border: 1px solid rgba(255,184,77,0.28);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #FFB84D;
+            transition: background .3s, transform .3s;
+            letter-spacing: 0.5px;
+        }
+        .faq-item.open .faq-num {
+            background: linear-gradient(135deg, rgba(255,184,77,0.38), rgba(255,107,0,0.28));
+            transform: scale(1.12);
+        }
+
+        .faq-question-text {
+            flex: 1;
+            font-size: 1.05rem;
+            font-weight: 600;
+            line-height: 1.45;
+            color: rgba(255,255,255,0.95);
+            transition: color .25s;
+        }
+        .faq-item.open .faq-question-text { color: #FFB84D; }
+
+        .faq-chevron {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid rgba(255,184,77,0.22);
+            color: #FFB84D;
+            font-size: 1.3rem;
+            line-height: 1;
+            transition: transform .4s cubic-bezier(.2,.9,.2,1),
+                        background .3s,
+                        border-color .3s;
+        }
+        .faq-item.open .faq-chevron {
+            transform: rotate(180deg);
+            background: rgba(255,184,77,0.15);
+            border-color: rgba(255,184,77,0.5);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            padding: 0 22px 0 72px;
+            color: rgba(255,255,255,0.82);
+            font-size: 1rem;
+            line-height: 1.75;
+            transition: max-height .52s cubic-bezier(.2,.9,.2,1),
+                        opacity .38s ease,
+                        padding .35s ease;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 500px;
+            opacity: 1;
+            padding: 6px 22px 22px 72px;
+        }
+        .faq-answer a {
+            color: #FFB84D;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255,184,77,0.35);
+            transition: border-color .2s;
+        }
+        .faq-answer a:hover { border-color: #FFB84D; }
+        .faq-answer strong { color: rgba(255,255,255,0.95); }
+
+        @media (max-width: 600px) {
+            .faq-answer,
+            .faq-item.open .faq-answer { padding-left: 22px; }
+        }
     </style>
 </head>
 <body>
@@ -579,49 +740,91 @@
             </div>
         </section>
 
-        <!-- FAQ Section (improved) -->
+        <!-- FAQ Section — Redesign -->
         <section id="faq">
-            <h2 class="section-title">❓ Häufige Fragen (FAQ)</h2>
+            <h2 class="section-title">💬 Häufige Fragen</h2>
+            <p class="faq-section-intro">
+                Alles, was ihr über unser Sponsoring wissen müsst — ehrlich &amp; direkt beantwortet.
+            </p>
             <div class="faq-accordion" role="list">
+
                 <div class="faq-item" role="listitem">
                     <button class="faq-question" aria-expanded="false" aria-controls="faq1" id="faq1-btn">
-                        <span>Wie kann ich Sponsor werden?</span>
-                        <span class="faq-icon">+</span>
+                        <span class="faq-num">01</span>
+                        <span class="faq-question-text">Was ist der „Abirol Spritz" — und warum sollte mein Unternehmen dabei sein?</span>
+                        <span class="faq-chevron">&#8964;</span>
                     </button>
                     <div id="faq1" class="faq-answer" role="region" aria-labelledby="faq1-btn">
-                        <p>Schreiben Sie uns eine E-Mail an <a href="mailto:f.dragano@emagym.de" style="color:#FFB84D; text-decoration:none;">f.dragano@emagym.de</a> oder nutzen Sie den Direkt-Link über PayPal für eine schnelle Unterstützung.</p>
+                        <p>Der <strong>Abirol Spritz</strong> ist das Abschlussprojekt des Abiturjahrgangs 2027 am EMMA-Herweghy-Gymnasium Remscheid — er umfasst Abipulli, Abibuch, Abiball und alle weiteren Aktionen bis zum großen Abschluss. Als Sponsor sichern Sie sich <strong>echte Sichtbarkeit</strong> bei Schüler:innen, Familien und Lehrkräften und setzen ein positives Zeichen für Bildungsförderung in Remscheid.</p>
                     </div>
                 </div>
 
                 <div class="faq-item" role="listitem">
                     <button class="faq-question" aria-expanded="false" aria-controls="faq2" id="faq2-btn">
-                        <span>Welche Leistungen erhalte ich als Sponsor?</span>
-                        <span class="faq-icon">+</span>
+                        <span class="faq-num">02</span>
+                        <span class="faq-question-text">Wie viele Menschen erreiche ich mit meinem Sponsoring tatsächlich?</span>
+                        <span class="faq-chevron">&#8964;</span>
                     </button>
                     <div id="faq2" class="faq-answer" role="region" aria-labelledby="faq2-btn">
-                        <p>Abhängig vom Paket (Platin/Gold/Silber/Bronze) erhalten Sie z. B. Logoplatzierung auf Pullis, Erwähnung im Abibuch, Social-Media-Nennungen und persönliche Danksagungen.</p>
+                        <p>Der Jahrgang umfasst rund <strong>120 Abiturient:innen</strong> — hinzu kommen Familien, Freunde und Lehrkräfte. Das Abibuch wird dauerhaft aufbewahrt, der Abipulli täglich getragen. Über Social Media und unsere Website erreichen wir zusätzlich eine breitere Öffentlichkeit in der Region Remscheid.</p>
                     </div>
                 </div>
 
                 <div class="faq-item" role="listitem">
                     <button class="faq-question" aria-expanded="false" aria-controls="faq3" id="faq3-btn">
-                        <span>Gibt es eine Rechnung oder Spendenbescheinigung?</span>
-                        <span class="faq-icon">+</span>
+                        <span class="faq-num">03</span>
+                        <span class="faq-question-text">Wie wird mein Logo konkret auf dem Abipulli platziert?</span>
+                        <span class="faq-chevron">&#8964;</span>
                     </button>
                     <div id="faq3" class="faq-answer" role="region" aria-labelledby="faq3-btn">
-                        <p>Für Sponsoring-Leistungen stellen wir auf Anfrage gerne eine Quittung oder Rechnung aus. Kontaktieren Sie uns per E-Mail mit Ihren Angaben.</p>
+                        <p>Die Platzierung richtet sich nach dem gebuchten Paket: <strong>Platin-Sponsoren</strong> erhalten ein großes Logo auf dem Rücken, <strong>Gold-Sponsoren</strong> auf dem Ärmel, <strong>Silber-Sponsoren</strong> ein kleineres Logo. Wir stimmen Größe, Position und Druckqualität vorab gemeinsam mit Ihnen ab, damit Ihr Branding optimal zur Geltung kommt.</p>
                     </div>
                 </div>
 
                 <div class="faq-item" role="listitem">
                     <button class="faq-question" aria-expanded="false" aria-controls="faq4" id="faq4-btn">
-                        <span>Kann ich ein individuelles Paket vereinbaren?</span>
-                        <span class="faq-icon">+</span>
+                        <span class="faq-num">04</span>
+                        <span class="faq-question-text">Wofür wird das Geld genau verwendet — transparent und ohne Umwege?</span>
+                        <span class="faq-chevron">&#8964;</span>
                     </button>
                     <div id="faq4" class="faq-answer" role="region" aria-labelledby="faq4-btn">
-                        <p>Ja — wir arbeiten gerne individuelle Lösungen aus. Schreiben Sie uns Ihre Wünsche per E-Mail, wir melden uns zeitnah zurück.</p>
+                        <p>100 % der Sponsoring-Einnahmen fließen direkt in die Projekte des Abiturjahrgangs: <strong>Produktion des Abibuchs</strong>, <strong>Druck der Abipullis</strong>, Organisation des <strong>Abiballs</strong> sowie Abschlussgottesdienst und weitere Abiveranstaltungen. Es gibt keine versteckten Kosten — auf Wunsch stellen wir eine transparente Aufstellung bereit.</p>
                     </div>
                 </div>
+
+                <div class="faq-item" role="listitem">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq5" id="faq5-btn">
+                        <span class="faq-num">05</span>
+                        <span class="faq-question-text">Kann ich als Privatperson oder Elternteil unterstützen — ohne Firmenlogo?</span>
+                        <span class="faq-chevron">&#8964;</span>
+                    </button>
+                    <div id="faq5" class="faq-answer" role="region" aria-labelledby="faq5-btn">
+                        <p>Absolut! Über den <a href="https://paypal.me/FDragano" target="_blank" rel="noopener">PayPal-Link</a> kann jeder unkompliziert einen beliebigen Betrag spenden — ganz ohne Logo-Pflicht. Auch kleine Beträge helfen uns enorm und werden namentlich im Abibuch erwähnt, wenn gewünscht.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" role="listitem">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq6" id="faq6-btn">
+                        <span class="faq-num">06</span>
+                        <span class="faq-question-text">Erhalte ich eine Rechnung oder Bestätigung für meine Buchhaltung?</span>
+                        <span class="faq-chevron">&#8964;</span>
+                    </button>
+                    <div id="faq6" class="faq-answer" role="region" aria-labelledby="faq6-btn">
+                        <p>Ja — für Sponsoring-Leistungen stellen wir auf Anfrage gerne eine <strong>Quittung oder Rechnung</strong> aus. Schreiben Sie uns einfach Ihre vollständigen Angaben an <a href="mailto:f.dragano@emagym.de">f.dragano@emagym.de</a>, wir melden uns innerhalb von 48 Stunden.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" role="listitem">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq7" id="faq7-btn">
+                        <span class="faq-num">07</span>
+                        <span class="faq-question-text">Wie schnell werde ich nach meiner Zusage auf der Website sichtbar?</span>
+                        <span class="faq-chevron">&#8964;</span>
+                    </button>
+                    <div id="faq7" class="faq-answer" role="region" aria-labelledby="faq7-btn">
+                        <p>Sobald Ihre Zahlung eingegangen ist, erscheinen Sie in der Regel <strong>innerhalb von 24 Stunden</strong> in der Sponsorenliste auf dieser Seite. Die Website bleibt bis mindestens nach dem Abiball 2027 online.</p>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -704,64 +907,44 @@
             }
         })();
 
-        // Enhanced FAQ accordion behavior: smooth height animation + accessibility
-        (function(){
-            const buttons = document.querySelectorAll('.faq-question');
-
+        // ── FAQ accordion ──────────────────────────────────────────
+        (function () {
             function closeItem(item) {
                 item.classList.remove('open');
-                const btn = item.querySelector('.faq-question');
-                const answer = item.querySelector('.faq-answer');
-                if (btn) btn.setAttribute('aria-expanded', 'false');
-                if (answer) answer.style.maxHeight = '0px';
+                item.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
             }
-
             function openItem(item) {
                 item.classList.add('open');
-                const btn = item.querySelector('.faq-question');
-                const answer = item.querySelector('.faq-answer');
-                if (btn) btn.setAttribute('aria-expanded', 'true');
-                if (answer) answer.style.maxHeight = answer.scrollHeight + 20 + 'px';
+                item.querySelector('.faq-question').setAttribute('aria-expanded', 'true');
             }
 
-            buttons.forEach(btn => {
-                const item = btn.closest('.faq-item');
-                const answer = item.querySelector('.faq-answer');
-
-                // keyboard support
-                btn.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        btn.click();
-                    }
+            document.querySelectorAll('.faq-question').forEach(btn => {
+                btn.addEventListener('keydown', e => {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
                 });
-
                 btn.addEventListener('click', () => {
+                    const item   = btn.closest('.faq-item');
                     const isOpen = item.classList.contains('open');
-
-                    // Close all to allow only one open at a time
                     document.querySelectorAll('.faq-item.open').forEach(i => closeItem(i));
-
                     if (!isOpen) openItem(item);
-                    else closeItem(item);
                 });
-
-                // Ensure starting maxHeight is correct if some items are pre-open
-                if (item.classList.contains('open') && answer) {
-                    answer.style.maxHeight = answer.scrollHeight + 20 + 'px';
-                }
             });
 
-            // Optional: reveal FAQ items when scrolled into view
-            try {
-                const observer = new IntersectionObserver((entries) => {
+            // Staggered entrance via IntersectionObserver
+            const items = document.querySelectorAll('.faq-item');
+            if ('IntersectionObserver' in window) {
+                const io = new IntersectionObserver((entries, obs) => {
                     entries.forEach(ent => {
-                        if (ent.isIntersecting) ent.target.classList.add('visible');
+                        if (ent.isIntersecting) {
+                            ent.target.classList.add('visible');
+                            obs.unobserve(ent.target);
+                        }
                     });
-                }, { threshold: 0.08 });
-                document.querySelectorAll('.faq-item').forEach(i => observer.observe(i));
-            } catch (e) {
-                // IntersectionObserver nicht unterstützt — kein Problem
+                }, { threshold: 0.1 });
+                items.forEach(i => io.observe(i));
+            } else {
+                // Fallback: show immediately
+                items.forEach(i => i.classList.add('visible'));
             }
         })();
     </script>
